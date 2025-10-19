@@ -1,0 +1,638 @@
+# SPDX-FileCopyrightText: 2024 August Eymann <august.eymann@gmail.com>
+# SPDX-FileCopyrightText: 2024 Steve <marlumpy@gmail.com>
+# SPDX-FileCopyrightText: 2024 marc-pelletier <113944176+marc-pelletier@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 Lenny <187471588+Bynnel@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+# Piping
+- type: rcd
+  id: PipeFourway
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    state: pipeFourway
+  mode: ConstructObject
+  prototype: GasPipeFourway
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeFourwayAlt1
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+    state: pipeFourway
+  mode: ConstructObject
+  prototype: GasPipeFourwayAlt1
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeFourwayAlt2
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+    state: pipeFourway
+  mode: ConstructObject
+  prototype: GasPipeFourwayAlt2
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeStraight
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    state: pipeStraight
+  mode: ConstructObject
+  prototype: GasPipeStraight
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeStraightAlt1
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+    state: pipeStraight
+  mode: ConstructObject
+  prototype: GasPipeStraightAlt1
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeStraightAlt2
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+    state: pipeStraight
+  mode: ConstructObject
+  prototype: GasPipeStraightAlt2
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeBend
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    state: pipeBend
+  mode: ConstructObject
+  prototype: GasPipeBend
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeBendAlt1
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+    state: pipeBend
+  mode: ConstructObject
+  prototype: GasPipeBendAlt1
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeBendAlt2
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+    state: pipeBend
+  mode: ConstructObject
+  prototype: GasPipeBendAlt2
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeTJunction
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe.rsi
+    state: pipeTJunction
+  mode: ConstructObject
+  prototype: GasPipeTJunction
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeTJunctionAlt1
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe_alt1.rsi
+    state: pipeTJunction
+  mode: ConstructObject
+  prototype: GasPipeTJunctionAlt1
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeTJunctionAlt2
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pipe_alt2.rsi
+    state: pipeTJunction
+  mode: ConstructObject
+  prototype: GasPipeTJunctionAlt2
+  cost: 1
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PipeManifold
+  category: Piping
+  sprite:
+    sprite: Structures/Piping/Atmospherics/manifold.rsi
+    state: pipeManifold
+  mode: ConstructObject
+  prototype: GasPipeManifold
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  rotation: User
+  fx: EffectRCDConstruct0
+
+# Pumps
+- type: rcd
+  id: PressurePump
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump.rsi
+    state: pumpPressure
+  mode: ConstructObject
+  prototype: GasPressurePump
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PressurePumpAlt1
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump_alt1.rsi
+    state: pumpPressure
+  mode: ConstructObject
+  prototype: GasPressurePumpAlt1
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PressurePumpAlt2
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump_alt2.rsi
+    state: pumpPressure
+  mode: ConstructObject
+  prototype: GasPressurePumpAlt2
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: VolumetricPump
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump.rsi
+    state: pumpVolume
+  mode: ConstructObject
+  prototype: GasVolumePump
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: VolumetricPumpAlt1
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump_alt1.rsi
+    state: pumpVolume
+  mode: ConstructObject
+  prototype: GasVolumePumpAlt1
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: VolumetricPumpAlt2
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump_alt2.rsi
+    state: pumpVolume
+  mode: ConstructObject
+  prototype: GasVolumePumpAlt2
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: ManualValve
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump.rsi
+    state: pumpManualValve
+  mode: ConstructObject
+  prototype: GasValve
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: ManualValveAlt1
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump_alt1.rsi
+    state: pumpManualValve
+  mode: ConstructObject
+  prototype: GasValveAlt1
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: ManualValveAlt2
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump_alt2.rsi
+    state: pumpManualValve
+  mode: ConstructObject
+  prototype: GasValveAlt2
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: SignalValve
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump.rsi
+    state: pumpSignalValve
+  mode: ConstructObject
+  prototype: SignalControlledValve
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: SignalValveAlt1
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump_alt1.rsi
+    state: pumpSignalValve
+  mode: ConstructObject
+  prototype: SignalControlledValveAlt1
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: SignalValveAlt2
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump_alt2.rsi
+    state: pumpSignalValve
+  mode: ConstructObject
+  prototype: SignalControlledValveAlt2
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PressureValve
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump.rsi
+    state: pumpPressureRegulator
+  mode: ConstructObject
+  prototype: PressureControlledValve
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PressureValveAlt1
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump_alt1.rsi
+    state: pumpPressureRegulator
+  mode: ConstructObject
+  prototype: PressureControlledValveAlt1
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: PressureValveAlt2
+  category: PumpsValves
+  sprite:
+    sprite: Structures/Piping/Atmospherics/pump_alt2.rsi
+    state: pumpPressureRegulator
+  mode: ConstructObject
+  prototype: PressureControlledValveAlt2
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+# Vents
+- type: rcd
+  id: OutletInjector
+  category: Vents
+  sprite:
+    sprite: Structures/Piping/Atmospherics/outletinjector.rsi
+    state: injector
+  mode: ConstructObject
+  prototype: GasOutletInjector
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: VentScrubber
+  category: Vents
+  sprite:
+    sprite: Structures/Piping/Atmospherics/scrubber.rsi
+    state: scrub_off
+  mode: ConstructObject
+  prototype: GasVentScrubber
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: VentGas
+  category: Vents
+  sprite:
+    sprite: Structures/Piping/Atmospherics/vent.rsi
+    state: vent_off
+  mode: ConstructObject
+  prototype: GasVentPump
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: DualPortVent
+  category: Vents
+  sprite:
+    sprite: Structures/Piping/Atmospherics/vent.rsi
+    state: vent_off
+  mode: ConstructObject
+  prototype: GasDualPortVentPump
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: VentPassive
+  category: Vents
+  sprite:
+    sprite: Structures/Piping/Atmospherics/vent.rsi
+    state: vent_passive
+  mode: ConstructObject
+  prototype: GasPassiveVent
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+# Utilities
+- type: rcd
+  id: Radiator
+  category: AtmosphericUtility
+  sprite:
+    sprite: Structures/Piping/Atmospherics/heatexchanger.rsi
+    state: heStraight
+  mode: ConstructObject
+  prototype: HeatExchanger
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: RadiatorBend
+  category: AtmosphericUtility
+  sprite:
+    sprite: Structures/Piping/Atmospherics/heatexchanger.rsi
+    state: heBend
+  mode: ConstructObject
+  prototype: HeatExchangerBend
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: MixerGas
+  category: AtmosphericUtility
+  sprite:
+    sprite: Structures/Piping/Atmospherics/gasmixer.rsi
+    state: gasMixer
+  mode: ConstructObject
+  prototype: GasMixer
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: MixerGasFlipped
+  category: AtmosphericUtility
+  sprite:
+    sprite: Structures/Piping/Atmospherics/gasmixer.rsi
+    state: gasMixerF
+  mode: ConstructObject
+  prototype: GasMixerFlipped
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: FilterGas
+  category: AtmosphericUtility
+  sprite:
+    sprite: Structures/Piping/Atmospherics/gasfilter.rsi
+    state: gasFilter
+  mode: ConstructObject
+  prototype: GasFilter
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: FilterGasFlipped
+  category: AtmosphericUtility
+  sprite:
+    sprite: Structures/Piping/Atmospherics/gasfilter.rsi
+    state: gasFilterF
+  mode: ConstructObject
+  prototype: GasFilterFlipped
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0
+
+- type: rcd
+  id: CanisterPort
+  category: AtmosphericUtility
+  sprite:
+    sprite: Structures/Piping/Atmospherics/gascanisterport.rsi
+    state: gasCanisterPort
+  mode: ConstructObject
+  prototype: GasPort
+  cost: 2
+  delay: 0
+  rules:
+  - MustBuildOnSubfloor
+  - NoUnstackableInTile
+  rotation: User
+  fx: EffectRCDConstruct0

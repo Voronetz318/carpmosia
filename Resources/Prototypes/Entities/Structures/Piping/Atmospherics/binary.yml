@@ -91,6 +91,12 @@
   - type: GuideHelp
     guides:
     - Pumps
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasBinaryBase
@@ -164,6 +170,12 @@
     - type: GuideHelp
       guides:
       - Pumps
+    # Carpmosia-start - Add RPD
+    - type: RPDDeconstructable
+      cost: 2
+      delay: 2
+      fx: EffectRCDDeconstruct2
+    # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasBinaryBase
@@ -225,6 +237,12 @@
   - type: GuideHelp
     guides:
     - PressureRegulator
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasBinaryBase
@@ -267,6 +285,12 @@
     - type: GuideHelp
       guides:
       - PassiveGate
+    # Carpmosia-start - Add RPD
+    - type: RPDDeconstructable
+      cost: 2
+      delay: 2
+      fx: EffectRCDDeconstruct2
+    # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasBinaryBase
@@ -328,6 +352,12 @@
     - type: GuideHelp
       guides:
       - ManualValve
+    # Carpmosia-start - Add RPD
+    - type: RPDDeconstructable
+      cost: 2
+      delay: 2
+      fx: EffectRCDDeconstruct2
+    # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasBinaryBase
@@ -400,6 +430,12 @@
   - type: GuideHelp
     guides:
     - SignalValve
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasBinaryBase
@@ -439,6 +475,12 @@
     - type: GuideHelp
       guides:
       - GasCanisters
+    # Carpmosia-start - Add RPD
+    - type: RPDDeconstructable
+      cost: 2
+      delay: 2
+      fx: EffectRCDDeconstruct2
+    # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasVentPump
@@ -505,6 +547,12 @@
     - type: GuideHelp
       guides:
       - AirVent
+    # Carpmosia-start - Add RPD
+    - type: RPDDeconstructable
+      cost: 2
+      delay: 2
+      fx: EffectRCDDeconstruct2
+    # Carpmosia-end - Add RPD
 
 - type: entity
   parent: [ BaseMachine, ConstructibleMachine ]
@@ -623,6 +671,12 @@
   - type: GuideHelp
     guides:
     - Radiators
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   parent: HeatExchanger
@@ -652,3 +706,9 @@
     - type: Construction
       graph: GasBinary
       node: bendradiator
+    # Carpmosia-start - Add RPD
+    - type: RPDDeconstructable
+      cost: 2
+      delay: 2
+      fx: EffectRCDDeconstruct2
+    # Carpmosia-end - Add RPD

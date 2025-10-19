@@ -157,6 +157,12 @@
     guides:
     - Pipes
     - PipeNetworks
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 1
+    delay: 1
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasPipeBase
@@ -207,6 +213,12 @@
     guides:
     - Pipes
     - PipeNetworks
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 1
+    delay: 1
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasPipeBase
@@ -250,6 +262,12 @@
     guides:
     - Pipes
     - PipeNetworks
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 1
+    delay: 1
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasPipeBase
@@ -295,6 +313,12 @@
     guides:
     - Pipes
     - PipeNetworks
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 1
+    delay: 1
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   id: GasPipeBroken
@@ -328,6 +352,12 @@
     guides:
     - Pipes
     - PipeNetworks
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 1
+    delay: 1
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasPipeSansLayers
@@ -399,3 +429,9 @@
   - type: Tag
     tags:
     - Unstackable
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
