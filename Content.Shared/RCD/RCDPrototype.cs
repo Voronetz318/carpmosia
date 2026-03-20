@@ -137,6 +137,7 @@ public enum RcdConstructionRule : byte
     MustBuildOnSubfloor,        // Can only be built on exposed subfloor (e.g. catwalks on lattice or hull plating)
     IsWindow,                   // The entity is a window and can be built on grilles
     IsCatwalk,                  // The entity is a catwalk
+    NoUnstackableInTile,        // Can only be built if there are no unstackables on tile (e.g. gas filters)
 }
 
 public enum RcdRotation : byte

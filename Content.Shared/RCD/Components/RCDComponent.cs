@@ -22,6 +22,12 @@ public sealed partial class RCDComponent : Component
     public HashSet<ProtoId<RCDPrototype>> AvailablePrototypes { get; set; } = new();
 
     /// <summary>
+    /// Whenever to use RCD or RPD logic
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool IsRPD { get; set; } = false;
+
+    /// <summary>
     /// Sound that plays when a RCD operation successfully completes
     /// </summary>
     [DataField]

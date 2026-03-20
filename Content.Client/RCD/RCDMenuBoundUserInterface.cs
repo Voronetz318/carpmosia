@@ -24,6 +24,12 @@ public sealed class RCDMenuBoundUserInterface : BoundUserInterface
             ["Airlocks"] = ("rcd-component-airlocks", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/airlocks.png"))),
             ["Electrical"] = ("rcd-component-electrical", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/multicoil.png"))),
             ["Lighting"] = ("rcd-component-lighting", new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/Radial/RCD/lighting.png"))),
+            // Carpmosia-start - Add RPD
+            ["Piping"] = ("rcd-component-piping", new SpriteSpecifier.Rsi(new ResPath("Structures/Piping/Atmospherics/pipe.rsi"), "pipeFourway")),
+            ["AtmosphericUtility"] = ("rcd-component-atmosphericutility", new SpriteSpecifier.Rsi(new ResPath("Structures/Piping/Atmospherics/gasmixer.rsi"), "gasMixer")),
+            ["PumpsValves"] = ("rcd-component-pumpsvalves", new SpriteSpecifier.Rsi(new ResPath("Structures/Piping/Atmospherics/pump.rsi"), "pumpVolume")),
+            ["Vents"] = ("rcd-component-vents", new SpriteSpecifier.Rsi(new ResPath("Structures/Piping/Atmospherics/vent.rsi"), "vent_passive")),
+            // Carpmosia-end - Add RPD
         };
 
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -55,11 +61,17 @@ public sealed class RCDMenuBoundUserInterface : BoundUserInterface
     {
         Dictionary<string, List<RadialMenuActionOptionBase>> buttonsByCategory = new();
         ValueList<RadialMenuActionOptionBase> topLevelActions = new();
+        // Iterate through the prototypes to build the list of actionOptions
+        // There is a distinction between prototypes from the top level category,
+        // and those from other categories, regarding how they are processed and turned into actionOptions
         foreach (var protoId in prototypes)
         {
+            // Get the prototype object with this specific protoId
             var prototype = _prototypeManager.Index(protoId);
+            // Check if the prototype is from the top level category
             if (prototype.Category == TopLevelActionCategory)
             {
+                // Create the actionOption for it and add that to the list
                 var topLevelActionOption = new RadialMenuActionOption<RCDPrototype>(HandleMenuOptionClick, prototype)
                 {
                     IconSpecifier = RadialMenuIconSpecifier.With(prototype.Sprite),
@@ -69,25 +81,34 @@ public sealed class RCDMenuBoundUserInterface : BoundUserInterface
                 continue;
             }
 
+            // Check if the prototype's category is present in PrototypesGroupingInfo
+            // If it is not, then it is an unknown category, and it can be skipped
             if (!PrototypesGroupingInfo.TryGetValue(prototype.Category, out var groupInfo))
                 continue;
 
+            // Check if the prototype's category is present in buttonsByCategory
+            // If it is not, a new entry associated to that category is added
             if (!buttonsByCategory.TryGetValue(prototype.Category, out var list))
             {
                 list = new List<RadialMenuActionOptionBase>();
                 buttonsByCategory.Add(prototype.Category, list);
             }
 
+            // Make an actionOption based on the prototype
             var actionOption = new RadialMenuActionOption<RCDPrototype>(HandleMenuOptionClick, prototype)
             {
                 IconSpecifier = RadialMenuIconSpecifier.With(prototype.Sprite),
                 ToolTip = GetTooltip(prototype)
             };
+            // Add it to the buttonsByCategory entry associated with the prototype's category
             list.Add(actionOption);
         }
 
+        // models is the array of actionOptions that is initially presented to the client
+        // It contains the nested actionOptions from buttonsByCategory entries, and the top level category ones
         var models = new RadialMenuOptionBase[buttonsByCategory.Count + topLevelActions.Count];
         var i = 0;
+        // Iterate through the buttonsByCategory entries and add them in nested actionOptions
         foreach (var (key, list) in buttonsByCategory)
         {
             var groupInfo = PrototypesGroupingInfo[key];
@@ -99,6 +120,7 @@ public sealed class RCDMenuBoundUserInterface : BoundUserInterface
             i++;
         }
 
+        // Iterate through the top level actionOptions and add them
         foreach (var action in topLevelActions)
         {
             models[i] = action;

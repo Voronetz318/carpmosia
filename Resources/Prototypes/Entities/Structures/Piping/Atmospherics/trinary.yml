@@ -87,6 +87,12 @@
     - type: GuideHelp
       guides:
       - MixingAndFiltering
+    # Carpmosia-start - Add RPD
+    - type: RPDDeconstructable
+      cost: 2
+      delay: 2
+      fx: EffectRCDDeconstruct2
+    # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasFilter
@@ -143,6 +149,12 @@
         !type:PipeNode
         nodeGroupID: Pipe
         pipeDirection: North
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasTrinaryBase
@@ -204,6 +216,12 @@
     - type: GuideHelp
       guides:
       - MixingAndFiltering
+    # Carpmosia-start - Add RPD
+    - type: RPDDeconstructable
+      cost: 2
+      delay: 2
+      fx: EffectRCDDeconstruct2
+    # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasMixer
@@ -256,6 +274,12 @@
         pipeDirection: North
   - type: Construction
     node: mixerflipped
+  # Carpmosia-start - Add RPD
+  - type: RPDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2
+  # Carpmosia-end - Add RPD
 
 - type: entity
   parent: GasPipeBase
@@ -330,3 +354,9 @@
       - PneumaticValve
       - Pumps
       - Valves
+    # Carpmosia-start - Add RPD
+    - type: RPDDeconstructable
+      cost: 2
+      delay: 2
+      fx: EffectRCDDeconstruct2
+    # Carpmosia-end - Add RPD

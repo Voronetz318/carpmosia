@@ -12,6 +12,7 @@ using Content.Shared.Popups;
 using Content.Shared.RCD.Components;
 using Content.Shared.Tag;
 using Content.Shared.Tiles;
+using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -22,11 +23,13 @@ using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using System.Linq;
+using Content.Shared.Construction.EntitySystems;
 
 namespace Content.Shared.RCD.Systems;
 
 public sealed class RCDSystem : EntitySystem
 {
+    [Dependency] private readonly AnchorableSystem _anchorable = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly ISharedAdminLogManager _adminLogger = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefMan = default!;
@@ -44,6 +47,7 @@ public sealed class RCDSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tags = default!;
+    // [Dependency] private readonly ILogManager _logManager = default!;
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
@@ -64,12 +68,41 @@ public sealed class RCDSystem : EntitySystem
         SubscribeLocalEvent<RCDComponent, DoAfterAttemptEvent<RCDDoAfterEvent>>(OnDoAfterAttempt);
         SubscribeLocalEvent<RCDComponent, RCDSystemMessage>(OnRCDSystemMessage);
         SubscribeNetworkEvent<RCDConstructionGhostRotationEvent>(OnRCDconstructionGhostRotationEvent);
+
+        SubscribeLocalEvent<RCDComponent, ActivateInWorldEvent>(ActivateInWorldEventTest);
+        SubscribeLocalEvent<RCDComponent, GetVerbsEvent<ActivationVerb>>(ActivationVerbTest);
+        SubscribeLocalEvent<RCDComponent, GetVerbsEvent<InteractionVerb>>(InteractionVerbTest);
+        SubscribeLocalEvent<RCDComponent, GetVerbsEvent<AlternativeVerb>>(AlternativeVerbTest);
     }
 
     #region Event handling
 
+    // private void ActivateInWorldEventTest(EntityUid uid, RCDComponent component, ActivateInWorldEvent args)
+    // {
+    //     _logManager.GetSawmill("rcd").Info($"ActivateInWorldEvent - uid={uid} - component={component} - args={args} - handled={args.Handled}");
+    //     // if (args.Handled)
+    //     //     return;
+    //     // args.Handled = true;
+    // }
+    //
+    // private void ActivationVerbTest(EntityUid uid, RCDComponent component, GetVerbsEvent<ActivationVerb> args)
+    // {
+    //     _logManager.GetSawmill("rcd").Info($"ActivationVerb - uid={uid} - component={component} - args={args}");
+    // }
+    //
+    // private void InteractionVerbTest(EntityUid uid, RCDComponent component, GetVerbsEvent<InteractionVerb> args)
+    // {
+    //     _logManager.GetSawmill("rcd").Info($"InteractionVerb - uid={uid} - component={component} - args={args}");
+    // }
+    //
+    // private void AlternativeVerbTest(EntityUid uid, RCDComponent component, GetVerbsEvent<AlternativeVerb> args)
+    // {
+    //     _logManager.GetSawmill("rcd").Info($"AlternativeVerb - uid={uid} - component={component} - args={args}");
+    // }
+
     private void OnMapInit(EntityUid uid, RCDComponent component, MapInitEvent args)
     {
+        // _logManager.GetSawmill("rcd").Info($"MapInitEvent - uid={uid} - component={component} - args={args}");
         // On init, set the RCD to its first available recipe
         if (component.AvailablePrototypes.Count > 0)
         {
@@ -85,6 +118,7 @@ public sealed class RCDSystem : EntitySystem
 
     private void OnRCDSystemMessage(EntityUid uid, RCDComponent component, RCDSystemMessage args)
     {
+        // _logManager.GetSawmill("rcd").Info($"RCDSystemMessage - uid={uid} - component={component} - args={args}");
         // Exit if the RCD doesn't actually know the supplied prototype
         if (!component.AvailablePrototypes.Contains(args.ProtoId))
             return;
@@ -102,6 +136,7 @@ public sealed class RCDSystem : EntitySystem
 
     private void OnExamine(EntityUid uid, RCDComponent component, ExaminedEvent args)
     {
+        _logManager.GetSawmill("rcd").Info($"ExaminedEvent - uid={uid} - component={component} - args={args}");
         if (!args.IsInDetailsRange)
             return;
 
@@ -125,6 +160,7 @@ public sealed class RCDSystem : EntitySystem
 
     private void OnAfterInteract(EntityUid uid, RCDComponent component, AfterInteractEvent args)
     {
+        _logManager.GetSawmill("rcd").Info($"AfterInteractEvent - uid={uid} - component={component} - args={args} - handled={args.Handled}");
         if (args.Handled || !args.CanReach)
             return;
 
@@ -178,6 +214,13 @@ public sealed class RCDSystem : EntitySystem
                         cost = destructible.Cost;
                         delay = destructible.Delay;
                         effectPrototype = destructible.Effect;
+                    }
+
+                    if (component.IsRPD && TryComp<RPDDeconstructableComponent>(args.Target, out var destructible2))
+                    {
+                        cost = destructible2.Cost;
+                        delay = destructible2.Delay;
+                        effectPrototype = destructible2.Effect;
                     }
                 }
 
@@ -240,6 +283,7 @@ public sealed class RCDSystem : EntitySystem
 
     private void OnDoAfterAttempt(EntityUid uid, RCDComponent component, DoAfterAttemptEvent<RCDDoAfterEvent> args)
     {
+        _logManager.GetSawmill("rcd").Info($"DoAfterAttemptEvent<RCDDoAfterEvent> - uid={uid} - component={component} - args={args}");
         if (args.Event?.DoAfter?.Args == null)
             return;
 
@@ -269,6 +313,7 @@ public sealed class RCDSystem : EntitySystem
 
     private void OnDoAfter(EntityUid uid, RCDComponent component, RCDDoAfterEvent args)
     {
+        _logManager.GetSawmill("rcd").Info($"RCDDoAfterEvent - uid={uid} - component={component} - args={args} - handled={args.Handled}");
         if (args.Cancelled)
         {
             // Delete the effect entity if the do-after was cancelled (server-side only)
@@ -372,6 +417,9 @@ public sealed class RCDSystem : EntitySystem
             case RcdMode.ConstructObject:
                 return IsConstructionLocationValid(uid, component, gridUid, mapGrid, tile, position, direction, user, popMsgs);
             case RcdMode.Deconstruct:
+                // If it is an RPD, use a separate deconstruction logic
+                if (component.IsRPD)
+                    return IsAtmosDeconstructionStillValid(uid, tile, target, user, popMsgs);
                 return IsDeconstructionStillValid(uid, tile, target, user, popMsgs);
         }
 
@@ -516,6 +564,17 @@ public sealed class RCDSystem : EntitySystem
             }
         }
 
+        // TODO maybe add a rule for pipe collisions?
+        // Check rule: There are no unstackables in the tile
+        if (component.IsRPD && prototype.ConstructionRules.Contains(RcdConstructionRule.NoUnstackableInTile)
+            && _anchorable.AnyUnstackablesAnchoredAt(_mapSystem.ToCoordinates(gridUid, position, mapGrid)))
+        {
+            if (popMsgs)
+                _popup.PopupClient(Loc.GetString("construction-step-condition-no-unstackable-in-tile"), uid, user);
+
+            return false;
+        }
+
         return true;
     }
 
@@ -570,6 +629,22 @@ public sealed class RCDSystem : EntitySystem
         return true;
     }
 
+    private bool IsAtmosDeconstructionStillValid(EntityUid uid, TileRef tile, EntityUid? target, EntityUid user, bool popMsgs = true)
+    {
+        // Attempt to deconstruct an object from the whitelist
+        if (target != null
+            && (TryComp<RPDDeconstructableComponent>(target, out var deconstructible) &&
+                deconstructible.Deconstructable))
+        {
+            return true;
+        }
+
+        if (popMsgs)
+            _popup.PopupClient(Loc.GetString("rcd-component-deconstruct-target-not-on-whitelist-message"), uid, user);
+
+        return false;
+    }
+
     #endregion
 
     #region Entity construction/deconstruction
@@ -594,21 +669,23 @@ public sealed class RCDSystem : EntitySystem
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to set grid: {gridUid} {position} to {prototype.Prototype}");
                 break;
 
+            // Get the angle first, as opposed to spawning the entity
+            // This is to avoid having to rotate the newly created entity, and thus, skipping some checks
             case RcdMode.ConstructObject:
-                var ent = Spawn(prototype.Prototype, _mapSystem.GridTileToLocal(gridUid, mapGrid, position));
-
+                var angle = Angle.Zero;
                 switch (prototype.Rotation)
                 {
                     case RcdRotation.Fixed:
-                        Transform(ent).LocalRotation = Angle.Zero;
+                        angle = Angle.Zero;
                         break;
                     case RcdRotation.Camera:
-                        Transform(ent).LocalRotation = Transform(uid).LocalRotation;
+                        angle = Transform(uid).LocalRotation;
                         break;
                     case RcdRotation.User:
-                        Transform(ent).LocalRotation = direction.ToAngle();
+                        angle = direction.ToAngle();
                         break;
                 }
+                var ent = SpawnAttachedTo(prototype.Prototype, _mapSystem.GridTileToLocal(gridUid, mapGrid, position), rotation: angle);
 
                 _adminLogger.Add(LogType.RCD, LogImpact.High, $"{ToPrettyString(user):user} used RCD to spawn {ToPrettyString(ent)} at {position} on grid {gridUid}");
                 break;
