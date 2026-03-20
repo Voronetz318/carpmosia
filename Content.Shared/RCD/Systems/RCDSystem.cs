@@ -47,7 +47,7 @@ public sealed class RCDSystem : EntitySystem
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tags = default!;
-    // [Dependency] private readonly ILogManager _logManager = default!;
+    [Dependency] private readonly ILogManager _logManager = default!;
 
     private readonly int _instantConstructionDelay = 0;
     private readonly EntProtoId _instantConstructionFx = "EffectRCDConstruct0";
@@ -69,10 +69,10 @@ public sealed class RCDSystem : EntitySystem
         SubscribeLocalEvent<RCDComponent, RCDSystemMessage>(OnRCDSystemMessage);
         SubscribeNetworkEvent<RCDConstructionGhostRotationEvent>(OnRCDconstructionGhostRotationEvent);
 
-        SubscribeLocalEvent<RCDComponent, ActivateInWorldEvent>(ActivateInWorldEventTest);
-        SubscribeLocalEvent<RCDComponent, GetVerbsEvent<ActivationVerb>>(ActivationVerbTest);
-        SubscribeLocalEvent<RCDComponent, GetVerbsEvent<InteractionVerb>>(InteractionVerbTest);
-        SubscribeLocalEvent<RCDComponent, GetVerbsEvent<AlternativeVerb>>(AlternativeVerbTest);
+        // SubscribeLocalEvent<RCDComponent, ActivateInWorldEvent>(ActivateInWorldEventTest);
+        // SubscribeLocalEvent<RCDComponent, GetVerbsEvent<ActivationVerb>>(ActivationVerbTest);
+        // SubscribeLocalEvent<RCDComponent, GetVerbsEvent<InteractionVerb>>(InteractionVerbTest);
+        // SubscribeLocalEvent<RCDComponent, GetVerbsEvent<AlternativeVerb>>(AlternativeVerbTest);
     }
 
     #region Event handling
